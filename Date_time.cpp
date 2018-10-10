@@ -79,7 +79,7 @@ namespace SAX {
     std::string Date_time::str() {
         std::ostringstream os;
         os << std::put_time(&m_date_time, "%Y-%b-%d %H:%M:%S");
-        if(!os.fail()) throw "Returning string failed.";
+        if(os.fail()) throw "Returning string failed.";
         auto time_as_string{os.str()};
         return time_as_string;
     }
@@ -88,7 +88,7 @@ namespace SAX {
     std::string Date_time::str(std::string fmt) {
         std::ostringstream os;
         os << std::put_time( &m_date_time,fmt.c_str());
-        if(!os.fail()) throw "Returning string using own formatting failed.";
+        if(os.fail()) throw "Returning string using own formatting failed.";
         auto time_as_string{ os.str()};
         return time_as_string;
     }
