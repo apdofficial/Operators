@@ -68,12 +68,9 @@ int main() {
 //        std::cout << "---advanced by ""200"" seconds ----" << "\n";
 //        date_time.advance(interval3);
 //        std::cout << date_time.str() << "\n\n";
-
     }
-
     catch(const char * str){
         std::cout<<"Exception: "<<str<<"\n";
     }
-
     return 0;
 }

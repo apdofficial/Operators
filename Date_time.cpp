@@ -41,6 +41,7 @@ namespace SAX {
             throw "Setting days failed. [Outside of the boundaries 0<day<32]";
         else { m_date_time =localTime;}
     };
+
     //copy assignment operator, copies another time_t into m_date_time
     Date_time& Date_time::operator=(const std::time_t& time){
         tm localTime = *std::localtime(&time);
@@ -57,7 +58,7 @@ namespace SAX {
         std::cout<<"date_time::operator=(const date_time&)["<<os.str()<<"]called\n";
     };
 
-    //copy assignment operator, copies another object into m_date_time
+    //copy assignment operator, copies another object Date_time o.m_date_time into m_date_time
     Date_time& Date_time::operator=(const Date_time& o){
         if(this != &o){
             m_date_time = o.m_date_time;
@@ -68,18 +69,17 @@ namespace SAX {
         return *this;
     }
 
+    //copy assignment operator, copies another object of type std::tm into m_date_time
     Date_time& Date_time::operator=(const std::tm& time){
         m_date_time = time;
         return *this;
     }
 
-
     // this function is returning Date & time as a string from tm m_date_time
     std::string Date_time::str() {
         std::ostringstream os;
         os << std::put_time(&m_date_time, "%Y-%b-%d %H:%M:%S");
-        os.fail() ? (m_error_flag = true) : (m_error_flag = false);
-        if (m_error_flag) throw "Returning string failed.";
+        if(!os.fail()) throw "Returning string failed.";
         auto time_as_string{os.str()};
         return time_as_string;
     }
@@ -88,8 +88,7 @@ namespace SAX {
     std::string Date_time::str(std::string fmt) {
         std::ostringstream os;
         os << std::put_time( &m_date_time,fmt.c_str());
-        os.fail() ? (m_error_flag = true) : (m_error_flag = false);
-        if(m_error_flag) throw "Returning string using own formatting failed.";
+        if(!os.fail()) throw "Returning string using own formatting failed.";
         auto time_as_string{ os.str()};
         return time_as_string;
     }
@@ -170,6 +169,4 @@ namespace SAX {
     };
 
     int Date_time::getSecond() const{ return m_date_time.tm_sec; }
-
-
 }
