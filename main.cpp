@@ -10,6 +10,7 @@ int main() {
         SAX::Date_time date_time;
         SAX::Date_time date_time_ownDate (year,month, day);
 
+
         std::cout << "\n""---Default constructor----" << "\n";
         std::cout << date_time.str() << "\n\n";
 
@@ -30,7 +31,10 @@ int main() {
         std::cout << "---Year has been changed to ""1999""----" << "\n";
         date_time.setYear(1999);
         std::cout << date_time.str() << "\n\n";
-
+        date_time +=interval;
+        std::cout << date_time.str() << "\n\n";
+        date_time -=interval;
+        std::cout << date_time.str() << "\n\n";
         std::cout << "---Day has been changed to ""22""----" << "\n";
         date_time.setDay(22);
         std::cout << date_time.str() << "\n\n";

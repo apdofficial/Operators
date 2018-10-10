@@ -13,6 +13,11 @@ namespace SAX {
         Date_time& operator=(const Date_time& o);
         Date_time& operator=(const std::tm& time);
 
+        Date_time& operator+(const std::chrono::seconds& time);
+        Date_time& operator+=(const std::chrono::seconds& time);
+        Date_time& operator-(const std::chrono::seconds& time);
+        Date_time& operator-=(const std::chrono::seconds& time);
+
         std::string str();
         std::string str(std::string fmt);
 

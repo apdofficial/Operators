@@ -75,6 +75,30 @@ namespace SAX {
         return *this;
     }
 
+    //addition assignment operator
+    Date_time& Date_time::operator+(const std::chrono::seconds& seconds){
+        m_date_time.tm_sec += seconds.count();
+        return *this;
+    }
+
+    //compound addition assignment operator
+    Date_time& Date_time::operator+=(const std::chrono::seconds& seconds){
+        m_date_time.tm_sec += seconds.count();
+        return *this;
+    }
+
+    //compound subtraction  assignment operator
+    Date_time& Date_time::operator-=(const std::chrono::seconds& seconds){
+        m_date_time.tm_sec -= seconds.count();
+        return *this;
+    }
+
+    //subtraction  assignment operator
+    Date_time& Date_time::operator-(const std::chrono::seconds& seconds){
+        m_date_time.tm_sec -= seconds.count();
+        return *this;
+    }
+
     // this function is returning Date & time as a string from tm m_date_time
     std::string Date_time::str() {
         std::ostringstream os;
