@@ -76,6 +76,8 @@ int main() {
 
         --date_time;
         std::cout<<date_time;
+
+        std::cout<<date_time["day"];
 //        /*wrong input*/
 //        std::cout << "---Year has been changed to ""3010""----" << "\n";
 //        date_time.setYear(3010);

@@ -166,6 +166,16 @@ namespace SAX {
         return dt;
     }
 
+    const int& Date_time::operator[](const std::string& str) const {
+       if (str =="year") return m_date_time.tm_year+1900;
+       else if (str =="month") return m_date_time.tm_mon;
+       else if (str =="day") return m_date_time.tm_mday;
+       else if (str =="hour") return m_date_time.tm_hour;
+       else if (str =="minute") return m_date_time.tm_min;
+       else if (str =="second") return m_date_time.tm_sec;
+       else throw "Incorrect request";
+    }
+
     // this function is returning Date & time as a string from tm m_date_time
     std::string Date_time::str(){
         return str("%Y-%b-%d %H:%M:%S");
