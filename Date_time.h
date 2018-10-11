@@ -27,10 +27,18 @@ namespace SAX {
         explicit operator std::time_t();
         explicit operator bool() const;
 
+        friend Date_time& operator++(Date_time& dt,int);
+        friend Date_time& operator--(Date_time &dt, int);
+        friend Date_time& operator++(Date_time &dt);
+        friend Date_time& operator--(Date_time &dt);
+
+        std::time_t my_time_t();
+
         std::string str();
         std::string str(std::string fmt);
 
-        friend std::ostream& operator<<(std::ostream &os, const Date_time &date_time);
+        friend std::ostream& operator<<(std::ostream &os, const Date_time &dt);
+        friend std::istream& operator>>(std::istream &is, Date_time &dt);
 
         void parse(std::string str);
         void parse(std::string str, std::string fmt);

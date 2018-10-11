@@ -101,35 +101,69 @@ namespace SAX {
     }
 
     bool Date_time::operator<(Date_time& rhsDate_time) {
-        time_t m_Rawtime {mktime(&m_date_time)};
-        time_t rhs_Rawtime {mktime(&rhsDate_time.m_date_time)};
-        return rhs_Rawtime < m_Rawtime;
+        return rhsDate_time.my_time_t() == this->my_time_t();
     }
 
     bool Date_time::operator<=(Date_time& rhsDate_time){
-        time_t m_Rawtime {mktime(&m_date_time)};
-        time_t rhs_Rawtime {mktime(&rhsDate_time.m_date_time)};
-        return rhs_Rawtime <= m_Rawtime;
+        return rhsDate_time.my_time_t() <= this->my_time_t();
     }
 
     bool Date_time::operator==(Date_time& rhsDate_time){
-        time_t m_Rawtime {mktime(&m_date_time)};
-        time_t rhs_Rawtime {mktime(&rhsDate_time.m_date_time)};
-        return rhs_Rawtime == m_Rawtime;
-
+        return rhsDate_time.my_time_t() == this->my_time_t();
     }
 
-    bool Date_time::operator>=(Date_time& date_time){ return date_time <= *this; }
+    bool Date_time::operator>=(Date_time& date_time){
+        return date_time <= *this;
+    }
 
-    bool Date_time::operator>(Date_time& date_time){ return date_time < *this; }
+    bool Date_time::operator>(Date_time& date_time){
+        return date_time < *this;
+    }
 
-    Date_time::operator std::time_t() { return mktime(&m_date_time); }
+    Date_time::operator std::time_t() {
+        return mktime(&m_date_time);
+    }
 
-    Date_time::operator bool() const{ return m_error_flag; };
+    std::time_t Date_time::my_time_t(){
+        return mktime(&m_date_time);
+    }
 
-    std::ostream& operator<<(std::ostream &os, const Date_time &o) {
-        os << std::put_time( &o.m_date_time,"%Y-%b-%d %H:%M:%S");
-        return os;
+    Date_time::operator bool() const{
+        return m_error_flag;
+    };
+
+    std::ostream& operator<<(std::ostream &os, const Date_time &dt) {
+        return os << std::put_time( &dt.m_date_time,"%Y-%b-%d %H:%M:%S")<<"\n";
+    }
+
+    std::istream& operator>>(std::istream &is, Date_time &dt) {
+        is.imbue(std::locale("en_US.UTF-8"));
+        is >> std::get_time(&dt.m_date_time,"%Y-%b-%d %H:%M:%S");
+        return is;
+    }
+
+    //post increment
+    Date_time& operator++(Date_time &dt, int) {
+        dt.m_date_time.tm_sec++;
+        return dt;
+    }
+
+    //post decrement
+    Date_time& operator--(Date_time &dt, int) {
+        dt.m_date_time.tm_sec--;
+        return dt;
+    }
+
+    //pre increment
+    Date_time& operator++(Date_time &dt) {
+        ++dt.m_date_time.tm_sec;
+        return dt;
+    }
+
+    //pre decrement
+    Date_time& operator--(Date_time &dt) {
+        --dt.m_date_time.tm_sec;
+        return dt;
     }
 
     // this function is returning Date & time as a string from tm m_date_time

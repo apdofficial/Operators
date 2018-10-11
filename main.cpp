@@ -5,6 +5,7 @@
 
 int main() {
     std::chrono::seconds interval {20}, interval2 {10}, interval3 {200};
+    std::istringstream a ;
     auto year{2015}, month{1}, day{22};
     try {
         SAX::Date_time date_time;
@@ -58,7 +59,22 @@ int main() {
         date_time.step_back(interval2);
         std::cout << date_time.str() << "\n\n";
 
-        std::cout << "---used my own operator<<----" << "\n";
+        std::cout << "---used overloaded operator<<----" << "\n";
+        std::cout <<date_time;
+
+//        std::cout << "\n Enter Date & time: (%Y-%b-%d %H:%M:%S): ";
+//        std::cin >>date_time;
+
+        std::cout << "\n---used overloaded operator>>----" << "\n";
+        std::cout<<date_time;
+
+        date_time++;
+        std::cout<<date_time;
+
+        ++date_time;
+        std::cout<<date_time;
+
+        --date_time;
         std::cout<<date_time;
 //        /*wrong input*/
 //        std::cout << "---Year has been changed to ""3010""----" << "\n";

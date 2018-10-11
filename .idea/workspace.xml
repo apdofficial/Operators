@@ -12,12 +12,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5529456b-f766-4e2d-9b1c-eec573b5f7e7" name="Default Changelist" comment="Code after Dawid's revision.">
+    <list default="true" id="5529456b-f766-4e2d-9b1c-eec573b5f7e7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Date_time.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Date_time.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Date_time.h" beforeDir="false" afterPath="$PROJECT_DIR$/Date_time.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Assignment_4_Operators" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Assignment_4_Operators" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/Date_time.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/Date_time.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
@@ -44,48 +45,48 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cpp" value="1" />
-          <entry key="h" value="2" />
+          <entry key="h" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="ObjectiveC" value="3" />
+          <entry key="ObjectiveC" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="2415" />
-          <entry key="h" value="407" />
-          <entry key="txt" value="111" />
+          <entry key="cpp" value="3067" />
+          <entry key="h" value="467" />
+          <entry key="txt" value="147" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="2822" />
-          <entry key="PLAIN_TEXT" value="111" />
+          <entry key="ObjectiveC" value="3534" />
+          <entry key="PLAIN_TEXT" value="147" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
+            <state relative-caret-position="312">
+              <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Date_time.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+            <state relative-caret-position="369">
+              <caret line="160" column="5" lean-forward="true" selection-start-line="160" selection-start-column="5" selection-end-line="161" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1539274527190" expanded="true" signature="177:8556" ph="..." />
+                <marker date="1539282115682" expanded="true" signature="177:9110" ph="..." />
               </folding>
             </state>
           </provider>
@@ -94,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Date_time.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+            <state relative-caret-position="480">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
@@ -112,8 +113,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Date_time.h" />
-        <option value="$PROJECT_DIR$/Date_time.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Date_time.cpp" />
       </list>
     </option>
   </component>
@@ -131,6 +132,7 @@
     <option name="height" value="1006" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -191,7 +193,7 @@
       <workItem from="1539238475116" duration="3407000" />
       <workItem from="1539251794162" duration="3690000" />
       <workItem from="1539255559315" duration="2482000" />
-      <workItem from="1539273311215" duration="1401000" />
+      <workItem from="1539273311215" duration="8593000" />
     </task>
     <task id="LOCAL-00001" summary="Working code(assignment 3 done).">
       <created>1539189144323</created>
@@ -214,11 +216,25 @@
       <option name="project" value="LOCAL" />
       <updated>1539200640698</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Assignment 4 (compulsory) finished.">
+      <created>1539274744241</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1539274744241</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Assignment 4 (compulsory) finished.">
+      <created>1539274806745</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1539274806745</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26506000" />
+    <option name="totallyTimeSpent" value="33698000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="23" width="960" height="1006" extended-state="0" />
@@ -238,7 +254,7 @@
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32833788" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32833788" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32822758" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32858709" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.253406" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -266,34 +282,42 @@
     <MESSAGE value="Working code(assignment 3 done)." />
     <MESSAGE value="Working code(assignment 3 done). Fixing mistake with str()" />
     <MESSAGE value="Code after Dawid's revision." />
-    <option name="LAST_COMMIT_MESSAGE" value="Code after Dawid's revision." />
+    <MESSAGE value="Assignment 4 (compulsory) finished." />
+    <option name="LAST_COMMIT_MESSAGE" value="Assignment 4 (compulsory) finished." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Date_time.h">
+    <entry file="file:///Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/sys/_types/_time_t.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+        <state relative-caret-position="450">
+          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Date_time.cpp">
+    <entry file="file://$PROJECT_DIR$/Date_time.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1539274527190" expanded="true" signature="177:8556" ph="..." />
-          </folding>
+        <state relative-caret-position="480">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
+        <state relative-caret-position="312">
+          <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Date_time.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="160" column="5" lean-forward="true" selection-start-line="160" selection-start-column="5" selection-end-line="161" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1539282115682" expanded="true" signature="177:9110" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
