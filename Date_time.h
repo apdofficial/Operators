@@ -2,8 +2,35 @@
 #define ASSIGNMENT_1_DATE_TIME_H
 #include <string>
 #include <chrono>
+
 namespace SAX {
     class Date_time {
+    private:
+        std::tm m_date_time;
+        bool m_error_flag;
+
+        //private proxy class
+        struct proxy{
+            Date_time& m_owner;
+            std::string m_request;
+
+            //helper function to get the correct member from the owner
+            auto getMember(const std::string& request) const{
+                if (request =="year") return m_owner.m_date_time.tm_year+1900;
+                else if (request =="month") return m_owner.m_date_time.tm_mon;
+                else if (request =="day") return m_owner.m_date_time.tm_mday;
+                else if (request =="hour") return m_owner.m_date_time.tm_hour;
+                else if (request =="minute") return m_owner.m_date_time.tm_min;
+                else if (request =="second") return m_owner.m_date_time.tm_sec;
+                else throw "Incorrect request";
+            }
+
+            explicit operator int() {
+                return getMember(m_request);
+            }
+        };
+
+
     public:
         explicit Date_time();
         Date_time(const int& year, const int& month,const int& day);
@@ -66,9 +93,26 @@ namespace SAX {
         void setSecond (const int& second);
         int  getSecond()const;
 
-    private:
-        std::tm m_date_time;
-        bool m_error_flag;
+        // returning a proxy
+        proxy year(){
+            return proxy{*this, "year"};
+        }
+        proxy month(){
+            return proxy{*this, "month"};
+        }
+        proxy day(){
+            return proxy{*this, "day"};
+        }
+        proxy hour(){
+            return proxy{*this, "hour"};
+        }
+        proxy minute(){
+            return proxy{*this, "minute"};
+        }
+        proxy second(){
+            return proxy{*this, "second"};
+        }
+
     };
 }
 

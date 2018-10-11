@@ -177,6 +177,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Assignment_4_Operators.dir/build.make CMakeFiles/Assignment_4_Operators.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+two_digs.o: two_digs.cpp.o
+
+.PHONY : two_digs.o
+
+# target to build an object file
+two_digs.cpp.o:
+	$(MAKE) -f CMakeFiles/Assignment_4_Operators.dir/build.make CMakeFiles/Assignment_4_Operators.dir/two_digs.cpp.o
+.PHONY : two_digs.cpp.o
+
+two_digs.i: two_digs.cpp.i
+
+.PHONY : two_digs.i
+
+# target to preprocess a source file
+two_digs.cpp.i:
+	$(MAKE) -f CMakeFiles/Assignment_4_Operators.dir/build.make CMakeFiles/Assignment_4_Operators.dir/two_digs.cpp.i
+.PHONY : two_digs.cpp.i
+
+two_digs.s: two_digs.cpp.s
+
+.PHONY : two_digs.s
+
+# target to generate assembly for a file
+two_digs.cpp.s:
+	$(MAKE) -f CMakeFiles/Assignment_4_Operators.dir/build.make CMakeFiles/Assignment_4_Operators.dir/two_digs.cpp.s
+.PHONY : two_digs.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... two_digs.o"
+	@echo "... two_digs.i"
+	@echo "... two_digs.s"
 .PHONY : help
 
 

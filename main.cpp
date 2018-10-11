@@ -78,6 +78,11 @@ int main() {
         std::cout<<date_time;
 
         std::cout<<date_time["day"];
+
+        std::cout<<"\n\n";
+
+        int s {date_time.month()};
+        std::cout<<s<<"\n";
 //        /*wrong input*/
 //        std::cout << "---Year has been changed to ""3010""----" << "\n";
 //        date_time.setYear(3010);
