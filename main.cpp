@@ -77,12 +77,19 @@ int main() {
         --date_time;
         std::cout<<date_time;
 
-        std::cout<<date_time["day"];
+        //std::cout << "It's year " << date_time["year"];
 
-        std::cout<<"\n\n";
+        std::cout<<"\n";
 
-        int s {date_time.month()};
-        std::cout<<s<<"\n";
+        //int s {date_time.month()};
+        //std::cout<<s<<"\n";
+
+        SAX::Date_time now;
+        auto hour{ now.hour() };
+        std::cout << "Now is: " << now;
+        hour+=1;
+        std::cout << "In one hour it wil be: " << now;
+
 //        /*wrong input*/
 //        std::cout << "---Year has been changed to ""3010""----" << "\n";
 //        date_time.setYear(3010);

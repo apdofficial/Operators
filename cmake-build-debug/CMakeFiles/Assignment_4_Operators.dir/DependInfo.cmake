@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/Date_time.cpp" "/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/Date_time.cpp.o"
   "/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/main.cpp" "/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/main.cpp.o"
-  "/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/two_digs.cpp" "/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/cmake-build-debug/CMakeFiles/Assignment_4_Operators.dir/two_digs.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

@@ -7,6 +7,3 @@ CMakeFiles/Assignment_4_Operators.dir/Date_time.cpp.o: ../Date_time.h
 CMakeFiles/Assignment_4_Operators.dir/main.cpp.o: ../Date_time.h
 CMakeFiles/Assignment_4_Operators.dir/main.cpp.o: ../main.cpp
 
-CMakeFiles/Assignment_4_Operators.dir/two_digs.cpp.o: ../two_digs.cpp
-CMakeFiles/Assignment_4_Operators.dir/two_digs.cpp.o: ../two_digs.h
-

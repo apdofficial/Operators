@@ -15,8 +15,8 @@ namespace SAX {
             std::string m_request;
 
             //helper function to get the correct member from the owner
-            auto getMember(const std::string& request) const{
-                if (request =="year") return m_owner.m_date_time.tm_year+1900;
+            auto& getMember(const std::string& request) {
+                if (request =="year") return m_owner.m_date_time.tm_year;
                 else if (request =="month") return m_owner.m_date_time.tm_mon;
                 else if (request =="day") return m_owner.m_date_time.tm_mday;
                 else if (request =="hour") return m_owner.m_date_time.tm_hour;
@@ -25,8 +25,36 @@ namespace SAX {
                 else throw "Incorrect request";
             }
 
-            explicit operator int() {
+             operator int() {
                 return getMember(m_request);
+            }
+
+            proxy& operator=(int value){
+
+                if (m_request == "year"){
+                    m_owner.m_date_time.tm_year = value;
+                }
+                else if (m_request == "month"){
+                    m_owner.m_date_time.tm_mon = value +1;
+                }
+                else if (m_request == "hour"){
+                    m_owner.m_date_time.tm_hour = value;
+                }
+                return *this;
+            }
+
+            proxy& operator+=(int value){
+
+                if (m_request == "year"){
+                    m_owner.m_date_time.tm_year += value+1900;
+                }
+                else if (m_request == "month"){
+                    m_owner.m_date_time.tm_mon += value +1;
+                }
+                else if (m_request == "hour"){
+                    m_owner.m_date_time.tm_hour += value;
+                }
+                return *this;
             }
         };
 
