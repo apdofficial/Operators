@@ -11,15 +11,26 @@ namespace SAX {
         Date_time& operator=(const std::time_t& time);
         Date_time(const Date_time& o);
         Date_time& operator=(const Date_time& o);
-        Date_time& operator=(const std::tm& time);
+        Date_time& operator=(std::tm time);
 
         Date_time& operator+(const std::chrono::seconds& time);
         Date_time& operator+=(const std::chrono::seconds& time);
         Date_time& operator-(const std::chrono::seconds& time);
         Date_time& operator-=(const std::chrono::seconds& time);
 
+        bool operator<(Date_time& date_time);
+        bool operator>(Date_time& date_time);
+        bool operator<=(Date_time& rhsDate_time);
+        bool operator>=(Date_time& date_time);
+        bool operator==(Date_time& rhsDate_time);
+
+        explicit operator std::time_t();
+        explicit operator bool() const;
+
         std::string str();
         std::string str(std::string fmt);
+
+        friend std::ostream& operator<<(std::ostream &os, const Date_time &date_time);
 
         void parse(std::string str);
         void parse(std::string str, std::string fmt);

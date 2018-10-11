@@ -31,10 +31,15 @@ int main() {
         std::cout << "---Year has been changed to ""1999""----" << "\n";
         date_time.setYear(1999);
         std::cout << date_time.str() << "\n\n";
+
+        std::cout << "---Added with operator+ 20sec""----" << "\n";
         date_time +=interval;
         std::cout << date_time.str() << "\n\n";
+
+        std::cout << "---Subtracted with compound operator-= 20sec""----" << "\n";
         date_time -=interval;
         std::cout << date_time.str() << "\n\n";
+
         std::cout << "---Day has been changed to ""22""----" << "\n";
         date_time.setDay(22);
         std::cout << date_time.str() << "\n\n";
@@ -53,6 +58,8 @@ int main() {
         date_time.step_back(interval2);
         std::cout << date_time.str() << "\n\n";
 
+        std::cout << "---used my own operator<<----" << "\n";
+        std::cout<<date_time;
 //        /*wrong input*/
 //        std::cout << "---Year has been changed to ""3010""----" << "\n";
 //        date_time.setYear(3010);

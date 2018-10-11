@@ -1,3 +1,5 @@
+#include <utility>
+
 #include "Date_time.h"
 #include <chrono>
 #include <sstream>
@@ -9,14 +11,18 @@
 namespace SAX {
 
     //default constructor constructs class with actual date & time
-    Date_time::Date_time() {
-        auto date_time = std::chrono::system_clock::now(); //current date & time
-        std::time_t c_date_time = std::chrono::system_clock::to_time_t(date_time); //convert to time_t
-        m_date_time = *std::localtime(&c_date_time); //convert to local calendar representation
-    };
+    Date_time::Date_time():
+    m_error_flag{false}
+    {
+        auto date_time = std::chrono::system_clock::now();
+        std::time_t c_date_time = std::chrono::system_clock::to_time_t(date_time);
+        m_date_time = *std::localtime(&c_date_time);
+    }
 
     // this is constructor that takes year, month and day and assigns 0 to every other member
-    Date_time::Date_time(const int& year,const int& month,const int& day) {
+    Date_time::Date_time(const int& year,const int& month,const int& day) :
+    m_error_flag{false}
+    {
         if(year > 3000 || year < 1900) throw "Setting years failed. [Outside of the boundaries 1900<year<3000]";
         else if(month > 11 || month < 0) throw "Setting months failed. [Outside of the boundaries 0=<month<=12]";
         else if(day < 0 || day>31) throw "Setting days failed. [Outside of the boundaries 0<day<32]";
@@ -28,7 +34,7 @@ namespace SAX {
             m_date_time.tm_min  = 0;
             m_date_time.tm_sec  = 0;
         }
-    };
+    }
 
     // this is constructor that takes time of type time_t and checks it and if it is valid constructs class with it
     Date_time::Date_time(const std::time_t& time) {
@@ -40,38 +46,33 @@ namespace SAX {
         else if(localTime.tm_mday < 0 || localTime.tm_mday>31)
             throw "Setting days failed. [Outside of the boundaries 0<day<32]";
         else { m_date_time =localTime;}
-    };
+    }
 
     //copy assignment operator, copies another time_t into m_date_time
     Date_time& Date_time::operator=(const std::time_t& time){
         tm localTime = *std::localtime(&time);
         m_date_time = localTime;
-
         return *this;
     }
 
     //copy constructor, initializes a class from another instance
-    Date_time::Date_time(const Date_time &o) {
-        m_date_time = o.m_date_time;
-        std::ostringstream os;
-        os << std::put_time(&m_date_time, "%Y-%b-%d %H:%M:%S");
-        std::cout<<"date_time::operator=(const date_time&)["<<os.str()<<"]called\n";
-    };
+    Date_time::Date_time(const Date_time &o) :
+        m_date_time{o.m_date_time},
+        m_error_flag{o.m_error_flag}
+    {}
 
     //copy assignment operator, copies another object Date_time o.m_date_time into m_date_time
     Date_time& Date_time::operator=(const Date_time& o){
         if(this != &o){
             m_date_time = o.m_date_time;
-            std::ostringstream os;
-            os << std::put_time(&m_date_time, "%Y-%b-%d %H:%M:%S");
-            std::cout<<"date_time::operator=(const date_time&)["<<os.str()<<"]called\n";
+            m_error_flag = o.m_error_flag;
         }
         return *this;
     }
 
     //copy assignment operator, copies another object of type std::tm into m_date_time
-    Date_time& Date_time::operator=(const std::tm& time){
-        m_date_time = time;
+    Date_time& Date_time::operator=(std::tm time){
+        m_date_time = std::move(time);
         return *this;
     }
 
@@ -99,32 +100,56 @@ namespace SAX {
         return *this;
     }
 
+    bool Date_time::operator<(Date_time& rhsDate_time) {
+        time_t m_Rawtime {mktime(&m_date_time)};
+        time_t rhs_Rawtime {mktime(&rhsDate_time.m_date_time)};
+        return rhs_Rawtime < m_Rawtime;
+    }
+
+    bool Date_time::operator<=(Date_time& rhsDate_time){
+        time_t m_Rawtime {mktime(&m_date_time)};
+        time_t rhs_Rawtime {mktime(&rhsDate_time.m_date_time)};
+        return rhs_Rawtime <= m_Rawtime;
+    }
+
+    bool Date_time::operator==(Date_time& rhsDate_time){
+        time_t m_Rawtime {mktime(&m_date_time)};
+        time_t rhs_Rawtime {mktime(&rhsDate_time.m_date_time)};
+        return rhs_Rawtime == m_Rawtime;
+
+    }
+
+    bool Date_time::operator>=(Date_time& date_time){ return date_time <= *this; }
+
+    bool Date_time::operator>(Date_time& date_time){ return date_time < *this; }
+
+    Date_time::operator std::time_t() { return mktime(&m_date_time); }
+
+    Date_time::operator bool() const{ return m_error_flag; };
+
+    std::ostream& operator<<(std::ostream &os, const Date_time &o) {
+        os << std::put_time( &o.m_date_time,"%Y-%b-%d %H:%M:%S");
+        return os;
+    }
+
     // this function is returning Date & time as a string from tm m_date_time
-    std::string Date_time::str() {
-        std::ostringstream os;
-        os << std::put_time(&m_date_time, "%Y-%b-%d %H:%M:%S");
-        if(os.fail()) throw "Returning string failed.";
-        auto time_as_string{os.str()};
-        return time_as_string;
+    std::string Date_time::str(){
+        return str("%Y-%b-%d %H:%M:%S");
     }
 
     // this function is returning Date & time as a string from tm m_date_time using own formatting
-    std::string Date_time::str(std::string fmt) {
+    std::string Date_time::str(std::string fmt){
         std::ostringstream os;
         os << std::put_time( &m_date_time,fmt.c_str());
-        if(os.fail()) throw "Returning string using own formatting failed.";
+        os.fail() ? (m_error_flag = true) : (m_error_flag = false);
+        if(os.fail()) throw "Returning string failed.";
         auto time_as_string{ os.str()};
         return time_as_string;
     }
 
     // this function is parsing string according en standards("en_US.utf-8") and putting it into tm m_date_time
     void Date_time::parse(std::string str){
-        std::tm t = {};
-        std::istringstream ss (str);
-        ss.imbue(std::locale("en_US.UTF-8"));
-        ss >> std::get_time(&t,"%Y-%b-%d %H:%M:%S");
-        if(!ss.fail())m_date_time = t;
-        else throw "Parsing failed.";
+        parse(std::move(str),"%Y-%b-%d %H:%M:%S");
     }
 
     // this function is parsing string according en standards("en_US.utf-8") and putting it into tm m_date_time
@@ -134,8 +159,9 @@ namespace SAX {
         std::istringstream ss (str);
         ss.imbue(std::locale("en_US.UTF-8"));
         ss >> std::get_time(&t,fmt.c_str());
+        ss.fail() ? (m_error_flag = true) : (m_error_flag = false);
         if(!ss.fail())m_date_time = t;
-        else throw "Parsing using own formatting failed.";
+        else throw "Parsing failed.";
     }
 
     // this function is adding seconds to m_date_time
