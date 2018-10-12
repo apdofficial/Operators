@@ -62,6 +62,7 @@ int main() {
         std::cout << "---used overloaded operator<<----" << "\n";
         std::cout <<date_time;
 
+        //asking user for input with overloaded operator>>//
 //        std::cout << "\n Enter Date & time: (%Y-%b-%d %H:%M:%S): ";
 //        std::cin >>date_time;
 
@@ -88,36 +89,32 @@ int main() {
         auto months {now.month()};
         auto days {now.day()};
         auto seconds{now.second()};
-//        std::cout << "Now is: " << now;
-//        std::cout << "In one hour it wil be: " << now;
-//        hour =1;
-//        minute =1;
-//        std::cout << "Now is:      " << now;
-//        hour +=10;
-//        minute +=10;
-//        std::cout << "Now is:      " << now;
-//        hour -=1;
-//        minute -=1;
-//        std::cout << "Now is:      " << now;
-//        hour = 21;
-//        minute =0;
-//        std::cout << "Now is:      " << now;
-//        years =2300;
-//        std::cout << "Now is:      " << now;
-
-years =2500;
-months =5;
-days = 5;
-hours =5;
-minutes = 5;
-seconds = 5;
-
-//        hour = 2300;
-//        years = 3000;
+        std::cout << "Now is: " << now;
+        std::cout << "In one hour it wil be: " << now;
+        hours =1;
+        minutes =1;
+        std::cout << "Now is:      " << now;
+        hours +=10;
+        minutes +=10;
+        std::cout << "Now is:      " << now;
+        hours -=1;
+        minutes -=1;
+        std::cout << "Now is:      " << now;
+        hours = 21;
+        minutes =0;
+        std::cout << "Now is:      " << now;
+        years =2300;
         std::cout << "Now is:      " << now;
 
+        years =2500;
+        months =5;
+        days = 5;
+        hours =5;
+        minutes = 5;
+        seconds = 5;
+        std::cout << "Now is:      " << now;
 
-        //        /*wrong input*/
+//        /*wrong input*/
 //        std::cout << "---Year has been changed to ""3010""----" << "\n";
 //        date_time.setYear(3010);
 //        std::cout << date_time.str() << "\n\n";

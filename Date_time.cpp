@@ -280,30 +280,12 @@ namespace SAX {
     }
 
     Date_time::proxy &Date_time::proxy::operator=(int value) {
-        if (m_request == "year"&& isValid(value, m_request)){
-            m_owner.m_date_time.tm_year = value - 1900;
-        }
-
-        else if (m_request == "month" && isValid(value, m_request)){
-            m_owner.m_date_time.tm_mon = value-1;
-        }
-
-        else if (m_request == "day" && isValid(value, m_request)){
-            m_owner.m_date_time.tm_mday = value;
-        }
-
-        else if (m_request == "hour"&& isValid(value, m_request)){
-            m_owner.m_date_time.tm_hour = value;
-        }
-
-        else if (m_request == "minute"&& isValid(value, m_request) ){
-             m_owner.m_date_time.tm_min = value;
-        }
-
-        else if (m_request == "second"&& isValid(value, m_request)){
-            m_owner.m_date_time.tm_sec = value;
-        }
-
+        if (m_request == "year"&& isValid(value, m_request)){ m_owner.m_date_time.tm_year = value - 1900; }
+        else if (m_request == "month" && isValid(value, m_request)){ m_owner.m_date_time.tm_mon = value-1; }
+        else if (m_request == "day" && isValid(value, m_request)){ m_owner.m_date_time.tm_mday = value; }
+        else if (m_request == "hour"&& isValid(value, m_request)){ m_owner.m_date_time.tm_hour = value; }
+        else if (m_request == "minute"&& isValid(value, m_request) ){ m_owner.m_date_time.tm_min = value; }
+        else if (m_request == "second"&& isValid(value, m_request)){ m_owner.m_date_time.tm_sec = value; }
         else throw "incorrect value";
         return *this;
     }
@@ -315,10 +297,7 @@ namespace SAX {
     }
 
     Date_time::proxy &Date_time::proxy::operator+=(int value) {
-        if (m_request == "year"){
-            m_owner.m_date_time.tm_year += value;
-        }
-
+        if (m_request == "year"){ m_owner.m_date_time.tm_year += value; }
         else if (m_request == "month"){
                 time_t time1 = m_owner.my_time_t();
                 time1 = m_owner.my_time_t();
@@ -327,37 +306,42 @@ namespace SAX {
                 m_owner.m_date_time = localTime;
 
         }
-
         else if (m_request == "day" ){
                 time_t time1 = m_owner.my_time_t();
                 time1 += value * 86400;
                 tm localTime = *std::localtime(&time1);
                 m_owner.m_date_time = localTime;
         }
-
         else if (m_request == "hour"){
                 time_t time1 = m_owner.my_time_t();
                 time1 += value * 3600;
                 tm localTime = *std::localtime(&time1);
                 m_owner.m_date_time = localTime;
         }
-
         else if (m_request == "minute" ){
                 time_t time1 = m_owner.my_time_t();
                 time1 += value * 60;
                 tm localTime = *std::localtime(&time1);
                 m_owner.m_date_time = localTime;
         }
-
         else if (m_request == "second"){
                 time_t time1 = m_owner.my_time_t();
                 time1 += value;
                 tm localTime = *std::localtime(&time1);
                 m_owner.m_date_time = localTime;
             }
-
         else throw "incorrect value";
         return *this;
 
+    }
+
+    bool Date_time::proxy::isValid(const int &value, const std::string &request) {
+        if (request == "year" && !(value > 3000 || value < 1900)){ check = true; }
+        if (request == "month" &&!(value > 12 || value < 0)){ check = true; }
+        if (request == "day"&& !(value > 31 || value < 0)){check = true; }
+        if (request == "hour" && !(value >= 24 || value < 0)){ check = true; }
+        else if (request == "minute" && !(value > 59 || value < 0)){ check = true; }
+        else if (request == "second" && !(value > 59 || value < 0)){ check = true; }
+        return check;
     }
 }
