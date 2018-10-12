@@ -82,21 +82,38 @@ int main() {
 
         /*########PROXY########*/
         SAX::Date_time now;
-        auto hour{ now.hour() };
-        auto minute{ now.minute()};
-        std::cout << "Now is: " << now;
-        std::cout << "In one hour it wil be: " << now;
-        hour =1;
-        minute =1;
-        std::cout << "Now is:      " << now;
-        hour +=10;
-        minute +=10;
-        std::cout << "Now is:      " << now;
-        hour -=1;
-        minute -=1;
-        std::cout << "Now is:      " << now;
-        hour = 0;
-        minute =0;
+        auto hours{ now.hour() };
+        auto minutes{ now.minute()};
+        auto years{now.year()};
+        auto months {now.month()};
+        auto days {now.day()};
+        auto seconds{now.second()};
+//        std::cout << "Now is: " << now;
+//        std::cout << "In one hour it wil be: " << now;
+//        hour =1;
+//        minute =1;
+//        std::cout << "Now is:      " << now;
+//        hour +=10;
+//        minute +=10;
+//        std::cout << "Now is:      " << now;
+//        hour -=1;
+//        minute -=1;
+//        std::cout << "Now is:      " << now;
+//        hour = 21;
+//        minute =0;
+//        std::cout << "Now is:      " << now;
+//        years =2300;
+//        std::cout << "Now is:      " << now;
+
+years =2500;
+months =5;
+days = 5;
+hours =5;
+minutes = 5;
+seconds = 5;
+
+//        hour = 2300;
+//        years = 3000;
         std::cout << "Now is:      " << now;
 
 

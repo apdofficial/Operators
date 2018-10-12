@@ -280,46 +280,31 @@ namespace SAX {
     }
 
     Date_time::proxy &Date_time::proxy::operator=(int value) {
-
-        if (m_request == "year"){
+        if (m_request == "year"&& isValid(value, m_request)){
             m_owner.m_date_time.tm_year = value - 1900;
         }
-        else if (m_request == "month"){
-            m_owner.m_date_time.tm_mon = value -1 ;
-        }
-        else if (m_request == "hour"){
-            if(plus_or_minus) {
-                time_t time1 = m_owner.my_time_t();
-                time1 += value * 3600;
-                tm localTime = *std::localtime(&time1);
-                m_owner.m_date_time = localTime;
-            }
-            else {m_owner.m_date_time.tm_hour =value;}
-        }
-        else if (m_request == "minute"){
-            if(plus_or_minus) {
-                time_t time1 = m_owner.my_time_t();
-                time1 += value * 60;
-                tm localTime = *std::localtime(&time1);
-                m_owner.m_date_time = localTime;
-            }
-            else {m_owner.m_date_time.tm_min =value;}
-        }
-        else if (m_request == "second"){
-            if(plus_or_minus) {
-                time_t time1 = m_owner.my_time_t();
-                time1 += 1;
-                tm localTime = *std::localtime(&time1);
-                m_owner.m_date_time = localTime;
-            }
-            else {m_owner.m_date_time.tm_min =value;}
-        }
-        plus_or_minus =false;
-        return *this;
-    }
 
-    Date_time::proxy &Date_time::proxy::operator+=(int value) {
-        *this = *this + value;
+        else if (m_request == "month" && isValid(value, m_request)){
+            m_owner.m_date_time.tm_mon = value-1;
+        }
+
+        else if (m_request == "day" && isValid(value, m_request)){
+            m_owner.m_date_time.tm_mday = value;
+        }
+
+        else if (m_request == "hour"&& isValid(value, m_request)){
+            m_owner.m_date_time.tm_hour = value;
+        }
+
+        else if (m_request == "minute"&& isValid(value, m_request) ){
+             m_owner.m_date_time.tm_min = value;
+        }
+
+        else if (m_request == "second"&& isValid(value, m_request)){
+            m_owner.m_date_time.tm_sec = value;
+        }
+
+        else throw "incorrect value";
         return *this;
     }
 
@@ -329,4 +314,50 @@ namespace SAX {
         return *this;
     }
 
+    Date_time::proxy &Date_time::proxy::operator+=(int value) {
+        if (m_request == "year"){
+            m_owner.m_date_time.tm_year += value;
+        }
+
+        else if (m_request == "month"){
+                time_t time1 = m_owner.my_time_t();
+                time1 = m_owner.my_time_t();
+                time1 += value * 2592000;
+                tm localTime = *std::localtime(&time1);
+                m_owner.m_date_time = localTime;
+
+        }
+
+        else if (m_request == "day" ){
+                time_t time1 = m_owner.my_time_t();
+                time1 += value * 86400;
+                tm localTime = *std::localtime(&time1);
+                m_owner.m_date_time = localTime;
+        }
+
+        else if (m_request == "hour"){
+                time_t time1 = m_owner.my_time_t();
+                time1 += value * 3600;
+                tm localTime = *std::localtime(&time1);
+                m_owner.m_date_time = localTime;
+        }
+
+        else if (m_request == "minute" ){
+                time_t time1 = m_owner.my_time_t();
+                time1 += value * 60;
+                tm localTime = *std::localtime(&time1);
+                m_owner.m_date_time = localTime;
+        }
+
+        else if (m_request == "second"){
+                time_t time1 = m_owner.my_time_t();
+                time1 += value;
+                tm localTime = *std::localtime(&time1);
+                m_owner.m_date_time = localTime;
+            }
+
+        else throw "incorrect value";
+        return *this;
+
+    }
 }

@@ -3208,7 +3208,7 @@ h4:hover a { color: #333; } h5:hover a { color: #333; } h6:hover a { color: #333
 <div class="sourceLine" id="cb12-4" data-line-number="4">    <span class="dt">int</span> <span class="va">m_digs</span>;</div>
 <div class="sourceLine" id="cb12-5" data-line-number="5"></div>
 <div class="sourceLine" id="cb12-6" data-line-number="6">    <span class="co">// a handy range checking function</span></div>
-<div class="sourceLine" id="cb12-7" data-line-number="7">    <span class="kw">auto</span> check(<span class="dt">int</span> value){</div>
+<div class="sourceLine" id="cb12-7" data-line-number="7">    <span class="kw">auto</span> isValid(<span class="dt">int</span> value){</div>
 <div class="sourceLine" id="cb12-8" data-line-number="8">        <span class="cf">return</span> value &gt; <span class="dv">0</span> &amp;&amp; value &lt; <span class="dv">10</span>?</div>
 <div class="sourceLine" id="cb12-9" data-line-number="9">            value :</div>
 <div class="sourceLine" id="cb12-10" data-line-number="10">            <span class="cf">throw</span> <span class="bu">std::</span>out_of_range(<span class="bu">std::</span>to_string(value) + <span class="st">&quot; is not a valid digit&quot;</span>);</div>
@@ -3228,8 +3228,8 @@ h4:hover a { color: #333; } h5:hover a { color: #333; } h6:hover a { color: #333
 <div class="sourceLine" id="cb12-24" data-line-number="24"></div>
 <div class="sourceLine" id="cb12-25" data-line-number="25">        <span class="co">//assignment operator - used when a user assigns a new integer value to the proxy object</span></div>
 <div class="sourceLine" id="cb12-26" data-line-number="26">        proxy&amp; <span class="kw">operator</span>=(<span class="dt">int</span> value){</div>
-<div class="sourceLine" id="cb12-27" data-line-number="27">            <span class="co">//check if in range</span></div>
-<div class="sourceLine" id="cb12-28" data-line-number="28">            value = <span class="va">m_owner</span>.check(value);</div>
+<div class="sourceLine" id="cb12-27" data-line-number="27">            <span class="co">//isValid if in range</span></div>
+<div class="sourceLine" id="cb12-28" data-line-number="28">            value = <span class="va">m_owner</span>.isValid(value);</div>
 <div class="sourceLine" id="cb12-29" data-line-number="29">            <span class="cf">if</span> (<span class="va">m_first</span>){</div>
 <div class="sourceLine" id="cb12-30" data-line-number="30">                <span class="kw">auto</span> second = get_digit(<span class="kw">false</span>);</div>
 <div class="sourceLine" id="cb12-31" data-line-number="31">                <span class="va">m_owner</span>.<span class="va">m_digs</span> = value * <span class="dv">10</span> + second;</div>
@@ -3244,7 +3244,7 @@ h4:hover a { color: #333; } h5:hover a { color: #333; } h6:hover a { color: #333
 <div class="sourceLine" id="cb12-40" data-line-number="40"><span class="kw">public</span>:</div>
 <div class="sourceLine" id="cb12-41" data-line-number="41">    <span class="co">// ctor</span></div>
 <div class="sourceLine" id="cb12-42" data-line-number="42">    two_digs(<span class="dt">int</span> first, <span class="dt">int</span> second):</div>
-<div class="sourceLine" id="cb12-43" data-line-number="43">        <span class="va">m_digs</span>{ check(first) * <span class="dv">10</span> + check(<span class="dv">10</span>) }</div>
+<div class="sourceLine" id="cb12-43" data-line-number="43">        <span class="va">m_digs</span>{ isValid(first) * <span class="dv">10</span> + isValid(<span class="dv">10</span>) }</div>
 <div class="sourceLine" id="cb12-44" data-line-number="44">    {}</div>
 <div class="sourceLine" id="cb12-45" data-line-number="45"></div>
 <div class="sourceLine" id="cb12-46" data-line-number="46">    <span class="co">// returning a proxy</span></div>

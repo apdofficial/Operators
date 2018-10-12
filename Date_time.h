@@ -13,12 +13,38 @@ namespace SAX {
         struct proxy{
             Date_time& m_owner;
             std::string m_request;
-            bool plus_or_minus;
+            //bool plus_or_minus;
+            bool check ;
             auto getMember(const std::string& request);
             operator int();
             proxy& operator=(int value);
             proxy& operator+=(int value);
             proxy& operator-=(int value);
+
+            bool isValid(const int &value, const std::string &request) {
+                if (request == "year" && !(value > 3000 || value < 1900)){ check = true; }
+
+                if (request == "month"){
+                    if (!(value > 12 || value < 0)) { check = true; }
+                }
+
+                if (request == "day" ){
+                    if (!(value > 31 || value < 0)) { check = true; }
+                }
+
+                if (request == "hour" ){
+                    if (!(value >= 24 || value < 0)) { check = true; }
+                }
+
+                else if (request == "minute" ){
+                    if (!(value > 59 || value < 0)) { check = true; }
+                }
+
+                else if (request == "second"){
+                    if (!(value > 59 || value < 0)) { check = true; }
+                }
+                return check;
+            }
         };
 
 
