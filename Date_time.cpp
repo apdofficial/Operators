@@ -167,8 +167,8 @@ namespace SAX {
     }
 
     const int& Date_time::operator[](const std::string& str) const {
-       if (str =="year") return m_date_time.tm_year;
-       else if (str =="month") return m_date_time.tm_mon;
+       if (str =="year") return m_date_time.tm_year + 1900;
+       else if (str =="month") return m_date_time.tm_mon + 1;
        else if (str =="day") return m_date_time.tm_mday;
        else if (str =="hour") return m_date_time.tm_hour;
        else if (str =="minute") return m_date_time.tm_min;

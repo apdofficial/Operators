@@ -2,7 +2,7 @@
 #define ASSIGNMENT_1_DATE_TIME_H
 #include <string>
 #include <chrono>
-
+#include <iostream>
 namespace SAX {
     class Date_time {
     private:
@@ -13,10 +13,10 @@ namespace SAX {
         struct proxy{
             Date_time& m_owner;
             std::string m_request;
-
+            bool plus_or_minus;
             //helper function to get the correct member from the owner
-            auto& getMember(const std::string& request) {
-                if (request =="year") return m_owner.m_date_time.tm_year;
+            auto getMember(const std::string& request) {
+                if (request =="year") return m_owner.m_date_time.tm_year+1900;
                 else if (request =="month") return m_owner.m_date_time.tm_mon;
                 else if (request =="day") return m_owner.m_date_time.tm_mday;
                 else if (request =="hour") return m_owner.m_date_time.tm_hour;
@@ -32,28 +32,51 @@ namespace SAX {
             proxy& operator=(int value){
 
                 if (m_request == "year"){
-                    m_owner.m_date_time.tm_year = value;
+                    m_owner.m_date_time.tm_year = value - 1900;
                 }
                 else if (m_request == "month"){
-                    m_owner.m_date_time.tm_mon = value +1;
+                    m_owner.m_date_time.tm_mon = value -1 ;
                 }
                 else if (m_request == "hour"){
-                    m_owner.m_date_time.tm_hour = value;
+                    if(plus_or_minus) {
+                        time_t time1 = m_owner.my_time_t();
+                        time1 += value * 3600;
+                        tm localTime = *std::localtime(&time1);
+                        m_owner.m_date_time = localTime;
+                    }
+                    else {m_owner.m_date_time.tm_hour =value;}
                 }
+                else if (m_request == "minute"){
+                    if(plus_or_minus) {
+                        time_t time1 = m_owner.my_time_t();
+                        time1 += value * 60;
+                        tm localTime = *std::localtime(&time1);
+                        m_owner.m_date_time = localTime;
+                    }
+                    else {m_owner.m_date_time.tm_min =value;}
+
+                }
+                else if (m_request == "second"){
+                    if(plus_or_minus) {
+                        time_t time1 = m_owner.my_time_t();
+                        time1 += 1;
+                        tm localTime = *std::localtime(&time1);
+                        m_owner.m_date_time = localTime;
+                    }
+                    else {m_owner.m_date_time.tm_min =value;}
+                }
+                plus_or_minus =false;
                 return *this;
             }
 
             proxy& operator+=(int value){
+                *this = *this + value;
+                return *this;
+            }
 
-                if (m_request == "year"){
-                    m_owner.m_date_time.tm_year += value+1900;
-                }
-                else if (m_request == "month"){
-                    m_owner.m_date_time.tm_mon += value +1;
-                }
-                else if (m_request == "hour"){
-                    m_owner.m_date_time.tm_hour += value;
-                }
+            proxy& operator-=(int value){
+                value *= -1;
+                *this += value;
                 return *this;
             }
         };
@@ -123,22 +146,22 @@ namespace SAX {
 
         // returning a proxy
         proxy year(){
-            return proxy{*this, "year"};
+            return proxy{*this, "year", false};
         }
         proxy month(){
-            return proxy{*this, "month"};
+            return proxy{*this, "month",false};
         }
         proxy day(){
-            return proxy{*this, "day"};
+            return proxy{*this, "day",false};
         }
         proxy hour(){
-            return proxy{*this, "hour"};
+            return proxy{*this, "hour",false};
         }
         proxy minute(){
-            return proxy{*this, "minute"};
+            return proxy{*this, "minute",false};
         }
         proxy second(){
-            return proxy{*this, "second"};
+            return proxy{*this, "second",false};
         }
 
     };

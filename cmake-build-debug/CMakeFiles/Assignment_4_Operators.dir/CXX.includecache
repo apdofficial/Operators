@@ -6,19 +6,29 @@
 
 #IncludeRegexTransform: 
 
+/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/Date_time.cpp
+utility
+-
+Date_time.h
+/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/Date_time.h
+chrono
+-
+sstream
+-
+iomanip
+-
+ctime
+-
+iostream
+-
+sstream
+-
+
 /Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/Date_time.h
 string
 -
 chrono
 -
-
-/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/main.cpp
 iostream
 -
-iomanip
--
-sstream
--
-Date_time.h
-/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 1/C++/Cplusplus_Assignments/Assignment_4_Operators/Date_time.h
 
