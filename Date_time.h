@@ -51,7 +51,7 @@ namespace SAX {
         friend Date_time& operator++(Date_time &dt);
         friend Date_time& operator--(Date_time &dt);
 
-        const int& operator[](const std::string& str)const;
+        int operator[](const std::string& str)const;
 
         std::time_t my_time_t();
 

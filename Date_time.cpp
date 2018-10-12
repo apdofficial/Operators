@@ -166,7 +166,7 @@ namespace SAX {
         return dt;
     }
 
-    const int& Date_time::operator[](const std::string& str) const {
+    int Date_time::operator[](const std::string& str) const {
        if (str =="year") return m_date_time.tm_year + 1900;
        else if (str =="month") return m_date_time.tm_mon + 1;
        else if (str =="day") return m_date_time.tm_mday;
@@ -291,44 +291,30 @@ namespace SAX {
     }
 
     Date_time::proxy &Date_time::proxy::operator-=(int value) {
-        value *= -1;
-        *this += value;
-        return *this;
+        return operator+=(-value);
     }
 
     Date_time::proxy &Date_time::proxy::operator+=(int value) {
         if (m_request == "year"){ m_owner.m_date_time.tm_year += value; }
         else if (m_request == "month"){
-                time_t time1 = m_owner.my_time_t();
-                time1 = m_owner.my_time_t();
-                time1 += value * 2592000;
-                tm localTime = *std::localtime(&time1);
-                m_owner.m_date_time = localTime;
-
+            m_owner.m_date_time.tm_mon += value;
+            std::mktime(&m_owner.m_date_time);
         }
         else if (m_request == "day" ){
-                time_t time1 = m_owner.my_time_t();
-                time1 += value * 86400;
-                tm localTime = *std::localtime(&time1);
-                m_owner.m_date_time = localTime;
+            m_owner.m_date_time.tm_mday += value;
+            std::mktime(&m_owner.m_date_time);
         }
         else if (m_request == "hour"){
-                time_t time1 = m_owner.my_time_t();
-                time1 += value * 3600;
-                tm localTime = *std::localtime(&time1);
-                m_owner.m_date_time = localTime;
+            m_owner.m_date_time.tm_hour += value;
+            std::mktime(&m_owner.m_date_time);
         }
         else if (m_request == "minute" ){
-                time_t time1 = m_owner.my_time_t();
-                time1 += value * 60;
-                tm localTime = *std::localtime(&time1);
-                m_owner.m_date_time = localTime;
+            m_owner.m_date_time.tm_min += value;
+            std::mktime(&m_owner.m_date_time);
         }
         else if (m_request == "second"){
-                time_t time1 = m_owner.my_time_t();
-                time1 += value;
-                tm localTime = *std::localtime(&time1);
-                m_owner.m_date_time = localTime;
+            m_owner.m_date_time.tm_sec += value;
+            std::mktime(&m_owner.m_date_time);
             }
         else throw "incorrect value";
         return *this;

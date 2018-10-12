@@ -90,6 +90,7 @@ int main() {
         auto days {now.day()};
         auto seconds{now.second()};
         std::cout << "Now is: " << now;
+        hours +=1;
         std::cout << "In one hour it wil be: " << now;
         hours =1;
         minutes =1;
@@ -113,6 +114,10 @@ int main() {
         minutes = 5;
         seconds = 5;
         std::cout << "Now is:      " << now;
+        days +=35;
+        months += 24;
+        std::cout << "Now is:      " << now;
+
 
 //        /*wrong input*/
 //        std::cout << "---Year has been changed to ""3010""----" << "\n";
