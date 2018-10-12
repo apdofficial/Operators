@@ -263,4 +263,70 @@ namespace SAX {
     };
 
     int Date_time::getSecond() const{ return m_date_time.tm_sec; }
+
+
+    auto Date_time::proxy::getMember(const std::string& request) {
+        if (request =="year") return m_owner.m_date_time.tm_year+1900;
+        else if (request =="month") return m_owner.m_date_time.tm_mon+1;
+        else if (request =="day") return m_owner.m_date_time.tm_mday;
+        else if (request =="hour") return m_owner.m_date_time.tm_hour;
+        else if (request =="minute") return m_owner.m_date_time.tm_min;
+        else if (request =="second") return m_owner.m_date_time.tm_sec;
+        else throw "Incorrect request";
+    }
+
+    Date_time::proxy::operator int(){
+        return getMember(m_request);
+    }
+
+    Date_time::proxy &Date_time::proxy::operator=(int value) {
+
+        if (m_request == "year"){
+            m_owner.m_date_time.tm_year = value - 1900;
+        }
+        else if (m_request == "month"){
+            m_owner.m_date_time.tm_mon = value -1 ;
+        }
+        else if (m_request == "hour"){
+            if(plus_or_minus) {
+                time_t time1 = m_owner.my_time_t();
+                time1 += value * 3600;
+                tm localTime = *std::localtime(&time1);
+                m_owner.m_date_time = localTime;
+            }
+            else {m_owner.m_date_time.tm_hour =value;}
+        }
+        else if (m_request == "minute"){
+            if(plus_or_minus) {
+                time_t time1 = m_owner.my_time_t();
+                time1 += value * 60;
+                tm localTime = *std::localtime(&time1);
+                m_owner.m_date_time = localTime;
+            }
+            else {m_owner.m_date_time.tm_min =value;}
+        }
+        else if (m_request == "second"){
+            if(plus_or_minus) {
+                time_t time1 = m_owner.my_time_t();
+                time1 += 1;
+                tm localTime = *std::localtime(&time1);
+                m_owner.m_date_time = localTime;
+            }
+            else {m_owner.m_date_time.tm_min =value;}
+        }
+        plus_or_minus =false;
+        return *this;
+    }
+
+    Date_time::proxy &Date_time::proxy::operator+=(int value) {
+        *this = *this + value;
+        return *this;
+    }
+
+    Date_time::proxy &Date_time::proxy::operator-=(int value) {
+        value *= -1;
+        *this += value;
+        return *this;
+    }
+
 }
